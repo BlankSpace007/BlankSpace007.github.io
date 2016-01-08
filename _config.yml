@@ -9,24 +9,24 @@ permalink:           pretty
 relative_permalinks: true
 
 # Setup
-title:               Naringu
-tagline:             'A Hacker like jekyll theme'
-description:         'oonlab is crafted with <3 by ariestiyansyah.'
-url:                 http://naringu.oonlab.com
+title:               BeingGeek
+tagline:             'Blog like a geek'
+description:         ''
+url:                 http://blankspace007.github.io
 baseurl:             /
 paginate:            7
 
 # About/contact
 author:
-  name:              Rizky Ariestiyansyah
-  url:               https://twitter.com/ariestiyansyah
-  email:             ariestiyansyah.rizky@gmail.com
+  name:              hoping_sir
+  url:               
+  email:             1059710422@qq.com
 
 # Custom vars
-version:             2.0
+version:             1.0
 
 # Social Media
-github:				http://github.com/ariestiyansyah
+github:				http://github.com/BlankSpace007 
 twitter:			http://twitter.com/ariestiyansyah
 disqus:             testnaringu
 
