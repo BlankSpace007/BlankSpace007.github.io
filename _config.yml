@@ -1,37 +1,39 @@
-# Dependencies
-markdown:            redcarpet
-highlighter:         pygments
+---
 
-# Permalinks
-#
-# Use of `relative_permalinks` ensures post links from the index work properly.
-permalink:           pretty
-relative_permalinks: true
+port: 4000
+host: 0.0.0.0
+safe: false
 
-# Setup
-title:               BeingGeek
-tagline:             'Blog like a geek'
-description:         ''
-url:                 http://blankspace007.github.io
-baseurl:             /
-paginate:            7
 
-# About/contact
-author:
-  name:              hoping_sir
-  url:               
-  email:             1059710422@qq.com
+### site serving configuration ###
+exclude: [CNAME, README.md, .gitignore]
+permalink: / ## disables post output
+timezone: null
+lsi: false
+markdown: kramdown
+highlighter: pygments
 
-# Custom vars
-version:             1.0
 
-# Social Media
-github:				http://github.com/BlankSpace007 
-twitter:			http://twitter.com/ariestiyansyah
-disqus:             testnaringu
+### content configuration ###
+title:       "SinglePaged - Simple Jekyll template"
+keywords:    "SinglePaged, jekyll, template, github, blog, single page"
+description: "A single-page template for Jekyll based blogs (like what you'd use on github pages!)"
+source_link: "https://github.com/t413/SinglePaged"
+favicon:     "img/favicon.ico"
+touch_icon:  "img/apple-touch-icon.png"
+google_analytics_key: UA-49607422-1 ## put YOUR key here to enable tracking! (blank to disable)
 
-# Theme Author (Please don't edit this line cause of MIT LICENSE rules)
-theme:
-  creator:			Rizky Ariestiyansyah
-  codename:			Naringu
-  link:             https://github.com/ariestiyansyah/naringu
+
+### template colors, used site-wide via css ###
+colors:
+  black:     '#111111'
+  white:     '#f8f8f8'
+  blue:      '#49a7e9'
+  green:     '#9bcf2f'
+  purple:    '#c869bf'
+  orange:    '#fab125'
+  turquoise: '#0fbfcf'
+
+kramdown:
+  auto_ids:  false
+
