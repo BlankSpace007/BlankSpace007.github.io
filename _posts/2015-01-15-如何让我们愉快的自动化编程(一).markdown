@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "Mediator Features"
+date:   2014-11-30 14:34:25
+categories: mediator feature
+tags: featured
+image: /assets/article_images/2014-11-30-mediator_features/night-track.JPG
+---
 # 如何让我们愉快的自动化编程(一)
 大家是不是还在烦恼每周一的时候去统计网站上统计自己app的数据，最近我们老大就向我们提出一个要求，每周一去友盟统计上去统计上一周的数据。身为极客(其实就是懒)的我，就想着怎么利用自动化在周一的自动运行脚本生成具有上周数据的xls，今天我们先解决如何在Mac上配置定时任务配置。
 
