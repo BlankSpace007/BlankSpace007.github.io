@@ -85,6 +85,28 @@ FILES
  ```
   launchctl load ~/Library/LaunchAgents/com.test.plist
  ``` 
+ 那么怎么看任务有没有加载进去呢？launchctl有自带的方法
+ 
+```
+launchctl list
+```
+ ![](/Users/hoping_sir/Desktop/1111111.png)
+ 我们会发现有好多任务，头疼啊，找起来好麻烦啊，对呀，还有这个方法
+ 
+```
+launchtcl list | grep "auto"
+```
+grep 后面添加的是任务的关键词，这个时候就会出现这么个情况
+![](/Users/hoping_sir/Desktop/22222.png)
+那么这就已经大功告成了
+如果你想修改任务里面的参数，就必须要unload
+
+```
+ launchctl unload ~/Library/LaunchAgents/com.test.plist
+```
+等到修改好之后再重新load
+那么，你现在是不是感觉有所感悟了。那就心动不如行动，自动化自己的任务吧！！！
+ 
 
 
 
