@@ -31,7 +31,7 @@ layout: default
 <main class="content" role="main">
 
     {% if site.tags.featured %}
-    <h5 class="index-headline featured"><span>Featured</span></h5>
+    <!-- <h5 class="index-headline featured"><span>Featured</span></h5>
 
     <div class="container featured">
       {% for post in site.tags.featured %}
@@ -45,14 +45,13 @@ layout: default
             </section>
             <div class="post-meta">
               <time datetime="{{ post.date | date_to_long_string }}">{{ post.date | date_to_long_string }}</time>
-  <!--            <span class="post-tags-set">on {{#foreach tags}}<span class="post-tag-{{slug}}">{{#if @first}}{{else}}, {{/if}}<a href="/tag/{{slug}}">{{name}}</a></span>{{/foreach}}</span>-->
             </div>
           </div>
         </article>
       {% endfor %}
-    </div>
+    </div> -->
 
-    <h5 class="index-headline normal"><span>Regular</span></h5>
+    <h5 class="index-headline normal"><span>Regular</span></h5> 
     {% endif %}
 
     <div class="cf frame">
@@ -67,7 +66,6 @@ layout: default
             </section>
             <div class="post-meta">
               <time datetime="{{ post.date | date_to_long_string }}">{{ post.date | date_to_long_string }}</time>
-<!--            <span class="post-tags-set">on {{#foreach tags}}<span class="post-tag-{{slug}}">{{#if @first}}{{else}}, {{/if}}<a href="/tag/{{slug}}">{{name}}</a></span>{{/foreach}}</span>-->
             </div>
           </div>
         </article>
@@ -87,9 +85,4 @@ layout: default
         {% endif %}
       {% endif %}
     </nav>
-
-
-    <!-- {{!! After all the posts, we have the previous/next pagination links }}
-    {{pagination}} -->
-
 </main>
