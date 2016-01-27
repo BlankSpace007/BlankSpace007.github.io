@@ -90,7 +90,7 @@ FILES
 ```
 launchctl list
 ```
- ![](/Users/hoping_sir/Desktop/1111111.png)
+ ![](/assets/article_images/2016-01-15/1111111.png)
  我们会发现有好多任务，头疼啊，找起来好麻烦啊，对呀，还有这个方法
  
 ```
