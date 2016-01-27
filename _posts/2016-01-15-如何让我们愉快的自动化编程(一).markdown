@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "如何让我们愉快的自动化编程(一)"
-date:   2015-01-15 14:34:25
+date:   2016-01-15 14:34:25
 categories: mediator feature
 tags: featured
-image: /assets/article_images/2014-11-30-mediator_features/night-track.JPG
+image: /assets/article_images/2016-01-15/pic.jpg
 ---
 
 # 如何让我们愉快的自动化编程(一)
