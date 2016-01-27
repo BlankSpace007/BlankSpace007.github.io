@@ -97,7 +97,7 @@ launchctl list
 launchtcl list | grep "auto"
 ```
 grep 后面添加的是任务的关键词，这个时候就会出现这么个情况
-![](/Users/hoping_sir/Desktop/22222.png)
+![](/assets/article_images/2016-01-15/22222.png)
 那么这就已经大功告成了
 如果你想修改任务里面的参数，就必须要unload
 
