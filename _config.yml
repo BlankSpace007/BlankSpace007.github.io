@@ -32,7 +32,7 @@ baseurl: ""
 # social icons and sharing options
 social:
   - icon:	twitter
-    url:https://twitter.com/beinggeek_lxp
+    url:    https://twitter.com/beinggeek_lxp
     desc: Follow me on twitter
     share_url: 
     share_title: 
