@@ -4,7 +4,7 @@ title:  "如何在Linux配置GitHub"
 date:   2017-09-23 16:35:55
 categories: mediator feature
 tags: featured
-image: /assets/article_images/2016-09-23/pic.jpg
+image:  /assets/article_images/2016-01-15/pic.jpg
 ---
 
 # 如何在Linux配置GitHub
