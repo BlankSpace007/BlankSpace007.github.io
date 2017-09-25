@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "基础numpy的使用"
+date:   2017-09-15 14:34:25
+categories: mediator feature
+tags: featured
+image: /assets/article_images/2016-01-15/pic.jpg
+---
+
+# 基础numpy的使用
+
+
+
+
+ 
+
+
