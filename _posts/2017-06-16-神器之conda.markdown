@@ -1,0 +1,46 @@
+---
+layout: post
+title:  "神器之conda"
+date:   2017-06-16 18:14:25
+categories: mediator feature
+tags: featured
+image: /assets/article_images/2016-01-15/pic.jpg
+---
+
+# 神器之conda
+python的双版本是我们一直所烦恼的事情，不过，现在有了conda这个神器，一切都好办了，conda是什么？Conda 是一个开源的软件包管理系统和环境管理系统，用于安装多个版本的软件包及其依赖关系，并在它们之间轻松切换。
+下面我们了解下conda的常见命令
+
+基本信息
+``conda -v`` conda的版本号
+``conda create -h`` 获得所有的命令
+``conda info -e ``环境信息
+``conda info ``conda信息
+
+更新conda和anaconda
+``conda update conda ``更新conda
+``conda update anaconda ``更新anaconda
+
+管理环境
+``conda create -n env_name python=3.5 ``创建环境并指定python环境，这个方法可以让我们创建想要的环境
+``source activate env_name ``激活环境
+``source deactivate env_name ``关闭环境
+``conda remove --name env_name --all ``删除环境
+
+包管理
+``conda list ``当前环境下安装的包
+``conda search numpy ``搜索包
+
+ ``activate env_nameconda install pandas`` 激活环境的时候安装
+``conda install -n env_name numpy ``指定环境安装包
+``conda install numpy ``当前环境安装包
+
+``conda update numpy ``更新包
+``conda remove -n test numpy ``移除包
+
+
+
+
+ 
+
+
