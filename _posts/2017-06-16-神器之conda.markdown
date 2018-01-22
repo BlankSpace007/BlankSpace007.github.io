@@ -36,6 +36,8 @@ python的双版本是我们一直所烦恼的事情，不过，现在有了conda
 ``conda install numpy ``当前环境安装包
 
 ``conda update numpy ``更新包
+``conda upgrade --all``更新当前环境下的所以的包
+
 ``conda remove -n test numpy ``移除包
 
 
