@@ -101,5 +101,106 @@ b ======= (1),0x600000445a90,1
 这个也是一个深拷贝，内容一样，地址不同，计数器为1.  
 综上观察，可以发现用(mutable)copy方法，浅拷贝时可以持有源对象，符合引用计数器的第二个特征，深拷贝呢其实就是生成一个全新的对象，符合引用计数器的的第一个特征。
 
+##### **使用retain方法。**
 
+上面提到了深拷贝和浅拷贝，那么retain方法也可以用于浅拷贝，看下下面例子
+```
+    //初始化一个数组
+    NSArray* array = [[NSArray alloc]initWithObjects:@"1", nil];
+    //打印retainCount
+    NSLog(@"array_retainCount=%ld   %p",[array retainCount],array);
+    //创建一个array2拷贝array
+    NSArray* array2 = [array retain];
+    //打印这两个数组的retainCount和内存地址
+    NSLog(@"array_retainCount=%ld   %p",[array retainCount],array);
+    NSLog(@"array2_retainCount=%ld   %p",[array2 retainCount],array2);
+```
+打印结果
+```
+array_retainCount=1
+array_retainCount=2   0x60000000bc90
+array2_retainCount=2   0x60000000bc90
+```
+观察结果可知，retain方法完全符合浅拷贝的定义，可以使retainCount+1    
+##### **使用release方法。**
+再说到这个方法之前，我们先说两个概念，内存泄漏和过度释放。   
+内存泄漏：在使用一块内存之后，始终无法释放，那么这就是内存泄漏。  
+过度释放：一块内存已经释放了，仍然去释放他，那么这就是过度释放。  
+在iOS中是这样的，一块内存初始分配，引用计数为1，此后每新增一个强引用，引用计数增加1；释放正好相反，每一次release，引用计数减1，直到为0，对象所用内存被真正free掉，以被再次复用。然而，实际开发当中，总有一些原因导致引用计数无法按正常逻辑减少到0，或者减少到0之后仍然被调用release，前者是内存泄露，后者则是过度释放。
+所以release的用法就是让retainCount-1.
+##### **使用dealloc方法。**
+当一个对象的引用计数器值为0时，这个对象即将别销毁，其占用的内存被系统回收，系统会自动给对象发送一条dealloc消息  
+一旦重写了dealloc方法，就必须调用[supper dealloc]，且放在最后面调用。
+## **2.自动释放池**
+从上面我们知道如何精确的内存管理，但是在某些情况，我们很难做到精确的释放内存，那么苹果给了你另外一种方式，那就是自动释放池。  
+原理：自动释放池以栈的形式实现，当你创建一个新的自动释放池时，它将被添加到栈顶。当一个对象收到发送autorelease消息时,它被添加到当前线程的处于栈顶的自动释放池中,当自动释放池被回收时,它们从栈中被删除, 并且会给池子里面所有的对象都会做一次release操作。  
+使用方式：  
+方法一：使用NSAutoreleasePool来创建
+```
+NSAutoreleasePool * pool = [[NSAutoreleasePool alloc]init];
+ //这里写代码
+ [pool release];
+```
+方法二：使用@autoreleasepool创建
+```
+@autoreleasepool {
+ //这里写代码
+ }
+```
+Ps : 官方文档说明, 使用@autoreleasepool这个block比NSAutoreleasePool更高效!
+
+那么我们写个例子
+```
+    //创建一个内存自动释放池
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc]init];
+    //初始化一个数组
+    NSArray* a = [[NSArray alloc]initWithObjects:@"1", nil];
+    //使引用计数器+1
+    [a retain];
+    //打印引用计数器
+    NSLog(@"%ld",[a retainCount]);
+    //释放自动释放池
+    [pool release];
+    //打印引用计数器
+    NSLog(@"%ld",[a retainCount]);
+```
+打印结果很奇怪，都为2
+那就说明这个数组没有加入到这个pool里面，需要再增加一个autorelease方法
+```
+    //创建一个内存自动释放池
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc]init];
+    //初始化一个数组
+    NSArray* a = [[NSArray alloc]initWithObjects:@"1", nil];
+    //使引用计数器+1
+    [a retain];
+    //打印引用计数器
+    NSLog(@"%ld",[a retainCount]);
+    //加入到pool里面
+    [a autorelease];
+    //释放自动释放池
+    [pool release];
+    //打印引用计数器
+    NSLog(@"%ld",[a retainCount]);
+```
+这时候打印结果就没错了，2和1。  
+再看看另外一种情况。
+```
+//创建一个内存自动释放池
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc]init];
+    //初始化一个数组
+    NSArray* a = [NSArray arrayWithObject:@"123"];
+    //使引用计数器+1
+    [a retain];
+    //打印引用计数器
+    NSLog(@"%ld",[a retainCount]);
+    //释放自动释放池
+    [pool release];
+    //打印引用计数器
+    NSLog(@"%ld",[a retainCount]);
+```
+这时候打印出来的结果也是2和1，但是我们并没有用autorelease方法啊。  
+这就是内存释放池的一个特征：  
+**非alloc/new/copy/mutableCopy开头的方法编译器都会自动帮我们调用autorelease方法.**
+
+在上面的例子可以看出，**即使使用内存自动释放池，也不会把存在里面的对象销毁，而是引用计数器减1**，所以，我们使用的时候，最好是将引用计数器为1的时候再存入。
 
