@@ -1,0 +1,105 @@
+---
+layout: post
+title:  "iOS内存管理"
+date:   2015-04-23 20:22:45
+categories: mediator feature
+tags: featured
+image:  /assets/article_images/2016-01-15/pic.jpg
+---
+自从ARC出现之后，写代码的效率成倍的增长，但是在ARC之前，是MRC。MRC是要自己管理内存，如果功力不深的话就会造成内存泄漏等问题。即使是现在的ARC时代，我们也要对内存管理要有自己的理解，这是通往大虾的必然之路。
+
+## 1.引用计数器(retainCount)
+
+引用计数器在内存管理中是一个非常重要的概念，它是一个判断对象是否被引用的一个数字。
+引用计数器有4个特点：   
+**a.自己生成的对象，自己持有。  
+b.非自己生成的对象，自己也能持有。  
+c.不再需要自己持有的对象时释放。  
+d.非自己持有的对象无法释放**
+
+那么该怎么理解引用计数器？先看一个简单的例子！
+```
+//初始化一个数组
+NSArray* array = [[NSArray alloc]initWithObjects:@"1", nil];
+//打印retainCount
+NSLog(@"retainCount=%ld",[array retainCount]);
+//这时候不用这个数组了
+[array release];
+//将指针置nil，否则变为野指针，没有这句话程序会报错
+array = nil;
+//打印retainCount
+NSLog(@"retainCount2=%ld",[array retainCount]);
+```
+得到的结果是retainCount=1，retainCount2=0.  
+我们可以看到在一个对象初始化之后，他的retainCount就变成1了，而release方法是释放，会让retainCount减1。当retainCount为0的时候就必须回收。  
+那么怎样算是自己生成的对象呢
+##### **使用alloc，new都是自己初始化的对象的方法 ** 
+一旦使用了，他们的retainCount就为1了，他们就必须自己去release，释放内存。也就是谁生成，谁释放的。  
+##### **使用(mutable)copy方法拷贝对象。**
+说起这个方法，就要讨论下深拷贝和浅拷贝的区别。  
+深拷贝：源对象和副本对象是不同的两个对象；  
+               源对象引用计数器不变，副本对象计数器为1（因为是新产生的）；  
+                 本质是：产生了新的对象。  
+                 
+浅拷贝：源对象和副本对象是同一个对象  
+                  源对象（副本对象）引用计数器+1，相当于做一次retain操作；  
+                  本质是：没有产生新对象。  
+ **那么(mutable)copy和这有什么关系呢？**  
+ 先说结论只有源对象和副本对象都不可变时，才是浅拷贝，其他都是深拷贝。原因是都为不可变是就说明他们不会改变，这个时候系统会为了节省内存让他们指向统一内存地址。  
+ A.都为不可变
+```
+    NSArray* a = [[NSArray alloc]initWithObjects:@"1", nil];
+    NSArray* b = [a copy];
+    NSLog(@"a ======= %@,%p,%d",a,a,[a retainCount]);
+    NSLog(@"b ======= %@,%p,%d",b,b,[b retainCount]);
+```
+打印出来的结果是
+```
+a ======= (   1   ),0x600000005660,1
+b ======= (   1   ),0x600000005660,2
+```
+很明显a和b是浅拷贝，相同的地址，相同的内容，计数器+1.  
+再看看其他三种  
+B.都为可变
+```
+    NSMutableArray* a = [[NSMutableArray alloc]initWithObjects:@"1", nil];
+    NSMutableArray* b = [a mutableCopy];
+    NSLog(@"a ======= %@,%p,%d",a,a,[a retainCount]);
+    NSLog(@"b ======= %@,%p,%d",b,b,[b retainCount]);
+```
+打印出来如下
+```
+a ======= (1),0x600000258180,1
+b ======= (1),0x6000002585a0,1
+```
+这个是一个深拷贝，内容一样，地址不同，计数器为1.  
+C.源对象为不可变，副对象为可变  
+```
+    NSArray* a = [[NSArray alloc]initWithObjects:@"1", nil];
+    NSMutableArray* b = [a mutableCopy];
+    NSLog(@"a ======= %@,%p,%d",a,a,[a retainCount]);
+    NSLog(@"b ======= %@,%p,%d",b,b,[b retainCount]);                  
+```
+打印结果如下：
+```
+a ======= (1),0x6000000034b0,1
+b ======= (1),0x600000445a90,1
+```
+这个也是一个深拷贝，内容一样，地址不同，计数器为1.  
+D.源对象为可变，副对象为不可变
+```
+    NSMutableArray* a = [[NSMutableArray alloc]initWithObjects:@"1", nil];
+    NSArray* b = [a copy];
+    NSLog(@"a ======= %@,%p,%d",a,a,[a retainCount]);
+    NSLog(@"b ======= %@,%p,%d",b,b,[b retainCount]);
+```
+打印结果如下：
+```
+a ======= (1),0x6000000034b0,1
+b ======= (1),0x600000445a90,1
+```
+这个也是一个深拷贝，内容一样，地址不同，计数器为1.  
+综上观察，可以发现用(mutable)copy方法，浅拷贝时可以持有源对象，符合引用计数器的第二个特征，深拷贝呢其实就是生成一个全新的对象，符合引用计数器的的第一个特征。
+
+
+
