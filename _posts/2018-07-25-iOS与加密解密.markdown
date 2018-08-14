@@ -1,0 +1,33 @@
+---
+layout: post
+title:  "iOS之加密解密(一)"
+date:   2018-07-25 18:14:25
+categories: mediator feature
+tags: featured
+image: /assets/article_images/2016-01-15/pic.jpg
+---
+
+## iOS与CommonCrypto库
+CommonCrypto里面是一些通用的库，这是一个C语言库，下面是这个库的结构：
+![](/assets/article_images/2018-07-25/pic1.png )
+我们可以看到这里面有8个头文件，那么这8个头文件分别有什么作用呢？下面我们一一解释一下。
+* CommonCrypto ：这和库名一致，里面是包含其他的头文件。
+* CommonCryptoError ：这是列举的所有错误。
+* CommonCryptor：这是和加密解密相关的头文件。
+* CommonDigest：消息摘要算法的头文件
+* CommonHMAC：HMAC算法的头文件。
+* CommonKeyDerivation：密钥导出相关的头文件。
+* CommonSymmetricKeywrap：对称密钥封装相关的头文件。
+* CommonRandom：生成随机数的头文件。  
+知道这些文件的作用，那么我们就有目的性的继续研究下去了。我们先从比较简单的`CommonDigest`开始看。
+### **CommonDigest**
+这个类是消息摘要算法，那么何为消息摘要算法，这个算法有一个特征，那就是**无法从消息摘要中复原信息**。这就意味着给你一串加密后的结果，(理论上)你是无法知道他加密前是什么样的。随着科学的发展，通过穷举字符组合的方式也可以破解出一些不复杂的文本。那么我们具体看下这个头文件。   
+里面分为MD系列和SHA系列：
+MD系列有MD2，MD4，MD5。由于MD2和MD4已经过时了，被MD5所代替，我们这里就只考虑MD5.  
+SHA系列有SHA1，SHA224，SHA256，SHA384，SHA512。SHA家族看起来比较庞大，其实只有三大类，SHA-0，SHA-1和SHA-2，SHA-0由于已经找到破解的算法，所以已经被抛弃了，而SHA1是属于SHA-1,其他的属于SHA-2，SHA-2后面的数字代表着它们的摘要长度。SHA-2的出现是由于SHA-1有了理论上的破解算法而产生的新算法。  
+理论上说这么多，下面就是实践了。
+
+
+ 
+
+
