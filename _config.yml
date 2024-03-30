@@ -123,7 +123,7 @@ layout:
 github:
   # (关闭请设置为false)
   enable: true
-  url: https://github.com/Shen-Yu/hexo-theme-ayer
+  url: https://BlankSpace007.github.io
 
 # 网易云音乐插件
 music:
