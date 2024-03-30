@@ -1,26 +1,36 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
-  "private": true,
+  "name": "hexo-theme-ayer",
+  "version": "1.9.7-0",
+  "description": "a clean and elegant theme for hexo.",
   "scripts": {
-    "build": "hexo generate",
-    "clean": "hexo clean",
-    "deploy": "hexo deploy",
-    "server": "hexo server"
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "postinstall": "node ./move_config.js",
+    "test": "stylint source-src/css/style.styl -c .stylintrc"
   },
-  "hexo": {
-    "version": ""
+  "source": "source-src/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shen-Yu/hexo-theme-ayer.git"
   },
-  "dependencies": {
-    "hexo": "^7.0.0",
-    "hexo-generator-archive": "^2.0.0",
-    "hexo-generator-category": "^2.0.0",
-    "hexo-generator-index": "^3.0.0",
-    "hexo-generator-tag": "^2.0.0",
-    "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^6.0.0",
-    "hexo-renderer-stylus": "^3.0.0",
-    "hexo-server": "^3.0.0",
-    "hexo-theme-landscape": "^1.0.0"
+  "keywords": [
+    "hexo",
+    "theme",
+    "blog",
+    "ayer"
+  ],
+  "author": "Shen-Yu <shenyu@hotmail.com>",
+  "license": "SATA",
+  "bugs": {
+    "url": "https://github.com/Shen-Yu/hexo-theme-ayer/issues",
+    "email": "shenyu@hotmail.com"
+  },
+  "homepage": "https://shen-yu.gitee.io/",
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "rollup": "^2.50.2",
+    "rollup-plugin-styles": "^3.14.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "stylint": "^2.0.0"
   }
 }
