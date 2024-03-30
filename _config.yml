@@ -94,7 +94,7 @@ exclude:
 ignore:
 
 # Extensions
-theme: Acetolog
+theme: ayer
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
