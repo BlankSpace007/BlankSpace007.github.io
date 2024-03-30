@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Ambition
 subtitle: ''
 description: ''
 keywords:
@@ -97,7 +97,9 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
+#theme: ocean
 theme: ayer
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
