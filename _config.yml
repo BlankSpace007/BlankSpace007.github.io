@@ -2,6 +2,11 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
+deploy: 
+      type: git
+      repository: git@github.com:BlankSpace007/BlankSpace007.github.io.git
+      branch: master
+
 # Site
 title: Ambition
 subtitle: ''
@@ -100,8 +105,3 @@ ignore:
 #theme: ocean
 theme: ayer
 
-
-# Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: ''
