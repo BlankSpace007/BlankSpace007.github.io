@@ -1,60 +1,92 @@
-# Build settings
-markdown: kramdown
-highlighter: rouge
-gems:
-  - jemoji
-  
-# Site settings
-title: "BeingGeek"
-description: > # this means to ignore newlines until "email:"
-   blog like geek
+root: /
 
-email: 1059710422@qq.com
-#blog logo
-logo: "/assets/images/author.jpg"
-# blog cover
-cover: "/assets/images/cA4aKEIPQrerBnp1yGHv_IMG_9534-3-2.jpg"
+Home: /
 
-name: 'hoping_sir'
-author: 'hoping_sir'
-author_image: "/assets/images/author.jpg"
+language: en
+theme: Acetolog
+author: iGuan7u
+description: A beautiful & simple theme.
 
-paginate:	5
+# AvatorURL
+# it would be shown on sidecar.
 
-url: "" # the base hostname & protocol for your site
-baseurl: ""
-#used to display twitter cards
-# twitter_handle: '@dirkfabisch'
+avatar: https://yourAvatorURL
 
-#fill in disqus shortname to use disqus
-#disqus: disqus-shortname
+# Comment
 
-# social icons and sharing options
-social:
-  - icon:	twitter
-    url:    https://twitter.com/beinggeek_lxp
-    desc: Follow me on twitter
-    share_url: 
-    share_title: 
-    share_link: 
+gitalk:
+  enable: false
+  clientID: github_clientID
+  clientSecret: github_clientSecret
+  repo: you site homepage
+  owner: your username
+  admin: same as [owner]
 
-#  - icon:	facebook
-#    url:	https://facebook.com/???
-#    desc: Connect with me facebook
-#    share_url: https://www.facebook.com/sharer.php
-#    share_title: ?t=
-#    share_link: "&amp;u="
+disqus:
+  enable: false
+  shortname: your_disqus_short_name
 
-  - icon:	github
-    url:	https://github.com/BlankSpace007
-    desc:	Fork me on github
-    share_url:
-    share_title:
-    share_link:
+# Contact_Info
+# Contact info will be shown on the side bar.
 
-#  - icon:	google-plus
-#    url:	https://google.com/???
-#    desc:	Add me on google+
-#    share_url:
-#    share_title:
-#    share_link:
+contact:
+  enable: false
+  description: 'Contact Info description'
+
+  twitter:
+    enable: false
+    username: twitter_username
+
+  github:
+    enable: false
+    username: github_username
+
+  weibo:
+    enable: false
+    username: weibo_username
+
+  facebook:
+    enable: false
+    username: facebook_username
+
+  instagram:
+    enable: false
+    username: instagram_username
+
+
+# Analytice
+
+## Recommended
+umami_analytice:
+  enable: false
+  website_id: umami_website_id
+  js_src: umami_js_src
+
+baidu_analytics:
+  enable: false
+  id: baidu_analytice_id
+
+google_analytice:
+  enable: false
+  tracking_id: google_tracking_id
+
+# Website ICPLicense
+# which is useful in China mainland.
+
+ICPLicense:
+  enable: false
+  content: "Fill IPCLicense"
+
+# EtraPlugin
+
+extra_plugin:
+  enable: false
+  url: extra_plugin_js_url
+
+# Development Setting
+
+node_sass:
+  # outputStyle: nested
+  outputStyle: compressed
+  precision: 5
+  sourceComments: false
