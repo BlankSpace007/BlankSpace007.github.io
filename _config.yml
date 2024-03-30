@@ -1,3 +1,8 @@
+deploy:
+    type: git
+    repo: git@github.com:BlankSpace007/BlankSpace007.github.io.git
+    branch: master
+
 # 侧边栏菜单
 menu:
   主页: /
