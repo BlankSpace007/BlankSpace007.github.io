@@ -1,97 +1,104 @@
-root: /
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
 
-Home: /
-
+# Site
+title: Hexo
+subtitle: ''
+description: ''
+keywords:
+author: John Doe
 language: en
-author: iGuan7u
-description: A beautiful & simple theme.
+timezone: ''
 
-# AvatorURL
-# it would be shown on sidecar.
+# URL
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+url: http://example.com
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
-avatar: https://yourAvatorURL
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
 
-theme: Acetolog
-# Comment
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link:
+  enable: true # Open external links in new tab
+  field: site # Apply to the whole site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+syntax_highlighter: highlight.js
+highlight:
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  preprocess: true
+  line_number: true
+  tab_replace: ''
 
-gitalk:
-  enable: false
-  clientID: github_clientID
-  clientSecret: github_clientSecret
-  repo: you site homepage
-  owner: your username
-  admin: same as [owner]
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
 
-disqus:
-  enable: false
-  shortname: your_disqus_short_name
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
 
-# Contact_Info
-# Contact info will be shown on the side bar.
+# Metadata elements
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true
 
-contact:
-  enable: false
-  description: 'Contact Info description'
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+## updated_option supports 'mtime', 'date', 'empty'
+updated_option: 'mtime'
 
-  twitter:
-    enable: false
-    username: twitter_username
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
 
-  github:
-    enable: false
-    username: github_username
+# Include / Exclude file(s)
+## include:/exclude: options only apply to the 'source/' folder
+include:
+exclude:
+ignore:
 
-  weibo:
-    enable: false
-    username: weibo_username
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: ayer
 
-  facebook:
-    enable: false
-    username: facebook_username
-
-  instagram:
-    enable: false
-    username: instagram_username
-
-
-# Analytice
-
-## Recommended
-umami_analytice:
-  enable: false
-  website_id: umami_website_id
-  js_src: umami_js_src
-
-baidu_analytics:
-  enable: false
-  id: baidu_analytice_id
-
-google_analytice:
-  enable: false
-  tracking_id: google_tracking_id
-
-# Website ICPLicense
-# which is useful in China mainland.
-
-ICPLicense:
-  enable: false
-  content: "Fill IPCLicense"
-
-# EtraPlugin
-
-extra_plugin:
-  enable: false
-  url: extra_plugin_js_url
-
-# Development Setting
-
-node_sass:
-  # outputStyle: nested
-  outputStyle: compressed
-  precision: 5
-  sourceComments: false
-
-
-load_paths:
-    - _sass
-    - node_modules
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: ''

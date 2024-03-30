@@ -1,19 +1,26 @@
 {
-  "name": "acetolog",
-  "version": "1.0.1",
-  "description": "A beautiful & simple theme.",
-  "repository": "https://github.com/iGuan7u/Acetolog",
-  "author": "iGuan7u <iguan7u@gmail.com>",
-  "license": "MIT",
-  "private": false,
+  "name": "hexo-site",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "dev": "webpack --watch",
-    "build": "webpack --mode=production"
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "server": "hexo server"
   },
-  "devDependencies": {
-    "ts-loader": "^6.2.2",
-    "typescript": "^3.8.3",
-    "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11"
+  "hexo": {
+    "version": ""
+  },
+  "dependencies": {
+    "hexo": "^7.0.0",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-index": "^3.0.0",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^6.0.0",
+    "hexo-renderer-stylus": "^3.0.0",
+    "hexo-server": "^3.0.0",
+    "hexo-theme-landscape": "^1.0.0"
   }
 }
