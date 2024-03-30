@@ -89,3 +89,8 @@ node_sass:
   outputStyle: compressed
   precision: 5
   sourceComments: false
+
+
+load_paths:
+    - _sass
+    - node_modules
