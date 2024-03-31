@@ -105,3 +105,11 @@ ignore:
 #theme: ocean
 theme: landscape
 
+
+# Deployment
+## Docs: One-Command Deployment
+deploy: 
+  type: git
+  repository: git@github.com:BlankSpace007/BlankSpace007.github.io.git
+  branch: master
+
