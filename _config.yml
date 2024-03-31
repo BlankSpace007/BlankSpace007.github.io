@@ -104,4 +104,5 @@ ignore:
 ## Themes: https://hexo.io/themes/
 #theme: ocean
 theme: ayer
+language: zh-CN
 
